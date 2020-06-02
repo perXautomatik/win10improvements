@@ -20,7 +20,11 @@ This is my collection of scripts I run of any fresh Windows 10 Instance.
 4. Watch how it goes
 
 ## Thanks
-A special thanks to Sycnex for the [Windows 10 Debloater](https://github.com/Sycnex/Windows10Debloater). I used some scripts of this project.
+A special thanks to:
+- Sycnex for the [Windows 10 Debloater](https://github.com/Sycnex/Windows10Debloater). 
+- W4RH4WK for the [Debloat-Windows-10](https://github.com/W4RH4WK/Debloat-Windows-10)
+
+I used scripts from them in this project.
 
 
 ### License
