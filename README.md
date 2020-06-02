@@ -14,8 +14,10 @@ This is my collection of scripts I run of any fresh Windows 10 Instance.
 - Enables File Explorer tweaks
 
 ## How to use it?
-First of all you have to download the latest Release.
-Then just simply execute the general.ps1 Powershell script and follow the instructions in the Powershell.
+1. Download the latest Release
+2. Put the [Chocolatey Packages](https://chocolatey.org/packages) into the .mysoftware file
+3. Execute the `general.ps1` file
+4. Watch how it goes
 
 ## Thanks
 A special thanks to Sycnex for the [Windows 10 Debloater](https://github.com/Sycnex/Windows10Debloater). I used some scripts of this project.
