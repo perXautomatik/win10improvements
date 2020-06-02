@@ -1,10 +1,17 @@
 # Installs Software the user wants
-$SoftwarePackages = (
-    "powertoys",
-    "microsoft-windows-terminal"
-    # here to go more
-)
 
+# read Software from file
+$lines = Get-Content -Path .mysoftware
+
+# parse to softare package array
+ForEach ($line in $lines) {
+    $SoftwarePackages += $line;
+}
+
+$SoftwarePackages = @()
+
+$count = $SoftwarePackages.Length;
+Write-Output "Installing $count Software Packages..."
 
 ForEach($Package in $SoftwarePackages) {
     Write-Output "Installing " + $Package + "..."
