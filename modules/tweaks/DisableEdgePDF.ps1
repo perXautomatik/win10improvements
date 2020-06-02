@@ -1,4 +1,4 @@
-#Stops edge from taking over as the default .PDF viewer    
+# Stops edge from taking over as the default .PDF viewer    
 Write-Output "Stopping Edge from taking over as the default .PDF viewer"
 $NoPDF = "HKCR:\.pdf"
 $NoProgids = "HKCR:\.pdf\OpenWithProgids"
@@ -22,7 +22,7 @@ If (!(Get-ItemProperty $NoWithList  NoStaticDefaultVerb)) {
     New-ItemProperty $NoWithList  NoStaticDefaultVerb 
 }
         
-#Appends an underscore '_' to the Registry key for Edge
+# Appends an underscore '_' to the Registry key for Edge
 $Edge = "HKCR:\AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723_"
 If (Test-Path $Edge) {
     Set-Item $Edge AppXd4nrz8ff68srnhf9t5a8sbjyar1cr723_ 

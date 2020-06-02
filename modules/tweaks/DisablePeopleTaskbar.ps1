@@ -1,4 +1,4 @@
-#Disables People icon on Taskbar
+# Disables People icon on Taskbar
 Write-Output "Disabling People icon on Taskbar"
 $People = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People'
 If (Test-Path $People) {
