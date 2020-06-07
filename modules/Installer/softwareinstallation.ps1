@@ -11,7 +11,7 @@ ForEach ($line in $lines) {
 $SoftwarePackages = @()
 
 $count = $SoftwarePackages.Length;
-Write-Output "Installing $count Software Packages..."
+Write-Output "Installing $count Software Package(s)..."
 
 ForEach($Package in $SoftwarePackages) {
     Write-Output "Installing " + $Package + "..."
