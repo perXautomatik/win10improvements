@@ -40,7 +40,7 @@ function Update-Kernel () {
     Remove-Item -Path $kernelUpdate
 }
 
-function Kernel-Updated () {
+function Update-Kernel () {
     # Check for Kernel Update Package
     Write-Host("Checking for Windows Subsystem for Linux Update...")
     $uninstall64 = Get-ChildItem "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" | ForEach-Object { Get-ItemProperty $_.PSPath } | Select-Object DisplayName, Publisher, DisplayVersion, InstallDate
@@ -60,7 +60,7 @@ function Get-WSLlist {
     $wslinstalls = $wslinstalls | Where-Object { $_ -ne 'Windows Subsystem for Linux Distributions:' }
     return $wslinstalls
 }
-function Check-Existance ($distro) {
+function Check ($distro) {
     # Check for the existence of a distro
     # return Installed as Bool
     $wslImport = $false
@@ -173,7 +173,7 @@ function Select-Distro () {
 }
 
 function Install-Distro ($distro) {
-    function WSL-Import ($distro) {
+    function Import-WSL ($distro) {
         $distroinstall = "$env:LOCALAPPDATA\lxss"
         $wslname = $($distro.Name).Replace(" ", "-")
         $Filename = $wslname + ".rootfs.tar.gz"
@@ -181,7 +181,7 @@ function Install-Distro ($distro) {
         Invoke-WebRequest -Uri $distro.URI -OutFile $Filename -UseBasicParsing
         wsl.exe --import $wslname $distroinstall $Filename
     }
-    function WSL-AppxAdd ($distro) {
+    function Add-AppxWSL ($distro) {
         # ToDo: Check if sideloading is required
         $Filename = "$($distro.AppxName).appx"
         $ProgressPreference = 'SilentlyContinue'
@@ -196,10 +196,10 @@ function Install-Distro ($distro) {
     }
     else {
         if ($($distro.AppxName).Length -gt 1) {
-            WSL-AppxAdd($distro)
+            Add-AppxWSL($distro)
         }
         else {
-            WSL-Import($distro)
+            Import-WSL($distro)
         }
     }
 }
@@ -229,14 +229,14 @@ else {
         Start-Process $distro.winpe
     }
     else {
-        $wslselect = ""
+        $wslSelect = ""
         Get-WSLlist | ForEach-Object {
             if ($_ -match $distro.Name) {
-                $wslselect = $_
+                $wslSelect = $_
             }
         }
-        if ($wslselect -ne "") {
-            wsl -d $wslselect
+        if ($wslSelect -ne "") {
+            wsl -d $wslSelect
         }
         else {
             Write-Host("Run 'wsl -l' to list WSL Distributions")
